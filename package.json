@@ -8,13 +8,13 @@
     "name": "Work Session Manager Team"
   },
   "license": "MIT",
-  "homepage": "https://github.com/work-session-manager/work-session-manager",
+  "homepage": "https://github.com/Oleh-Pashchenko/work-session-manager",
   "repository": {
     "type": "git",
-    "url": "https://github.com/work-session-manager/work-session-manager.git"
+    "url": "https://github.com/Oleh-Pashchenko/work-session-manager.git"
   },
   "bugs": {
-    "url": "https://github.com/work-session-manager/work-session-manager/issues"
+    "url": "https://github.com/Oleh-Pashchenko/work-session-manager/issues"
   },
   "engines": {
     "vscode": "^1.60.0"
