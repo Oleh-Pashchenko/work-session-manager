@@ -1,0 +1,173 @@
+{
+  "name": "work-session-manager",
+  "displayName": "Work Session Manager",
+  "description": "A VS Code extension to help developers manage their working time with customizable work sessions and rest periods",
+  "version": "1.0.0",
+  "publisher": "work-session-manager",
+  "author": {
+    "name": "Work Session Manager Team"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/work-session-manager/work-session-manager",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/work-session-manager/work-session-manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/work-session-manager/work-session-manager/issues"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "icon.png",
+  "keywords": [
+    "pomodoro",
+    "timer",
+    "productivity",
+    "work session",
+    "time management"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "workSessionManager.startSession",
+        "title": "Start Work Session",
+        "category": "Work Session Manager"
+      },
+      {
+        "command": "workSessionManager.startRest",
+        "title": "Start Rest Period",
+        "category": "Work Session Manager"
+      },
+      {
+        "command": "workSessionManager.pause",
+        "title": "Pause Timer",
+        "category": "Work Session Manager"
+      },
+      {
+        "command": "workSessionManager.resume",
+        "title": "Resume Timer",
+        "category": "Work Session Manager"
+      },
+      {
+        "command": "workSessionManager.reset",
+        "title": "Reset Timer",
+        "category": "Work Session Manager"
+      }
+    ],
+    "configuration": {
+      "title": "Work Session Manager",
+      "properties": {
+        "workSessionManager.sessionDuration": {
+          "type": "number",
+          "default": 25,
+          "minimum": 1,
+          "maximum": 120,
+          "description": "Duration of work sessions in minutes"
+        },
+        "workSessionManager.restDuration": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 60,
+          "description": "Duration of rest periods in minutes"
+        },
+        "workSessionManager.workSessionColor": {
+          "type": "string",
+          "default": "#4CAF50",
+          "description": "Color for work session display (hex code or color name)"
+        },
+        "workSessionManager.restPeriodColor": {
+          "type": "string",
+          "default": "#64B5F6",
+          "description": "Color for rest period display (hex code or color name)"
+        },
+        "workSessionManager.soundEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable sound notifications for session transitions"
+        },
+        "workSessionManager.showCountdown": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show countdown timer in status bar"
+        },
+        "workSessionManager.showStatusDot": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show status indicator dot in status bar"
+        },
+        "workSessionManager.autoStartRest": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start rest period after work session ends"
+        },
+        "workSessionManager.autoStartWork": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically start work session after rest period ends"
+        },
+        "workSessionManager.showPausePlayButton": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show pause/play button in status bar"
+        },
+        "workSessionManager.autoStartOnOpen": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically start work session when VS Code opens"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack --mode development",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch": "webpack --watch --mode development",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "lint:fix": "eslint src --ext ts --fix",
+    "test": "node ./out/runTest.js",
+    "test:unit": "npm run compile-tests && npm run test",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "package:vsix": "vsce package",
+    "publish": "vsce publish",
+    "publish:patch": "vsce publish patch",
+    "publish:minor": "vsce publish minor",
+    "publish:major": "vsce publish major",
+    "clean": "rimraf out dist *.vsix",
+    "build": "npm run clean && npm run compile",
+    "build:prod": "npm run clean && npm run package",
+    "build:all": "npm run clean && npm run lint && npm run test:unit && npm run package",
+    "dev": "npm run watch",
+    "install:local": "code --install-extension *.vsix",
+    "check": "npm run lint && npm run test:unit"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.60.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "@vscode/test-electron": "^2.1.5",
+    "@vscode/vsce": "^2.15.0",
+    "eslint": "^8.20.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^9.5.2",
+    "typescript": "^4.7.4",
+    "webpack": "^5.100.2",
+    "webpack-cli": "^6.0.1"
+  }
+}
