@@ -3,7 +3,7 @@
   "displayName": "Work Session Manager",
   "description": "A VS Code extension to help developers manage their working time with customizable work sessions and rest periods",
   "version": "1.0.0",
-  "publisher": "work-session-manager",
+  "publisher": "WorkSessionManager",
   "author": {
     "name": "Work Session Manager Team"
   },
